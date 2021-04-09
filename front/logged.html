@@ -1,0 +1,190 @@
+<nav class="navbar navbar-expand-lg navbar-dark px-3 py-2 bg-dark text-white">
+	<div class="container">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse align-items-center justify-content-center" id="navbarTogglerDemo01">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start w-100">
+                <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalProfile">
+                    <i class="bi bi-person me-2"></i>
+                    Charles
+                </a>
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li>
+                        <p class="nav-link text-white text-center" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Parts">
+                            <i class="bi bi-puzzle-fill d-block mb-1 text-center"></i>
+                            999.999
+                        </p>
+                    </li>
+                    <li>
+                        <a href="/more-gems" class="nav-link text-white text-center link-logged" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Gems">
+                            <i class="bi bi-gem d-block mb-1 text-center"></i>
+                            <i class="bi bi-plus"></i> 999.999
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/more-coins" class="nav-link text-white text-center link-logged" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Coins">
+                            <i class="bi bi-bullseye d-block mb-1 text-center"></i>
+                            <i class="bi bi-plus"></i> 999.999
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-muted" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="bi bi-gear d-block mb-1 text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
+                            Options
+                        </a>
+                    </li>
+                </ul>
+            </div>
+		</div>
+	</div>
+</nav>
+
+<div id="content"></div>
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark text-white">
+    <div class="container-fluid">
+        <ul class="nav col-12 col-xs-auto my-2 justify-content-center mx-auto my-md-0 text-small text-center">
+            <li class="col-3">
+                <a href="/home" class="nav-link text-muted page-logged" id="page-home">
+                    <i class="bi bi-house d-block mb-1 text-center"></i>
+                    Home
+                </a>
+            </li>
+            <li class="col-3">
+                <a href="/my-cards" class="nav-link text-muted page-logged" id="page-my-cards">
+                    <i class="bi bi-file d-block mb-1 text-center"></i>
+                    My cards
+                </a>
+            </li>
+            <li class="col-3">
+                <a href="/ranking" class="nav-link text-muted page-logged" id="page-ranking">
+                    <i class="bi bi-award d-block mb-1 text-center"></i>
+                    Ranking
+                </a>
+            </li>
+            <li class="col-3">
+                <a href="/store" class="nav-link text-muted page-logged" id="page-store">
+                    <i class="bi bi-shop-window d-block mb-1 text-center"></i>
+                    Store
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Offcanvas Options -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+	<div class="offcanvas-header">
+		<h5 id="offcanvasRightLabel">Options</h5>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+	    <a href="/logout" class="btn btn-secondary link-logged"><i class="bi bi-door-closed"></i> Logout</a>
+	</div>
+</div>
+
+<!-- Modal Profile -->
+<div class="modal fade" id="modalProfile" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel1">Profile</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<ul class="list-group mb-5">
+                    <li class="list-group-item active d-flex justify-content-between align-items-center">
+                        Battles PvP
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total battles
+                        <span class="badge bg-primary rounded-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total battles win
+                        <span class="badge bg-primary rounded-pill">2</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total battles defeat
+                        <span class="badge bg-primary rounded-pill">1</span>
+                    </li>
+                </ul>
+
+                <ul class="list-group mb-5">
+                    <li class="list-group-item active d-flex justify-content-between align-items-center">
+                        Cards
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total cards
+                        <span class="badge bg-primary rounded-pill">0</span>
+                    </li>
+                </ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Battle Pvp -->
+<div class="modal fade" id="modalBattlePvp" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel2">Battle PvP</h5>
+				<button type="button" class="btn-close close-battle" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-primary d-block mt-3 mb-3 mx-auto" id="btnBattlePvp"><i class="bi bi-search"></i> Search opponent</button>
+                <button type="button" class="btn btn-primary d-block mt-3 mb-3 mx-auto d-none" id="btnBattlePvpDisabled" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Search opponent
+                </button>
+                <button type="button" class="btn btn-danger d-block mt-3 mb-3 mx-auto d-none" id="btnBattlePvpCancel">Cancel</button>
+            </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary close-battle" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal My deck -->
+<div class="modal fade" id="modalDeck" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-fullscreen">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel3">My deck</h5>
+				<button type="button" class="btn-close close-deck" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Coming soon
+            </div>
+			<div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveDeck">Save</button>
+				<button type="button" class="btn btn-secondary close-deck" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Confirm Buy Purchase -->
+<div class="modal fade" id="modalConfirmBuyPurchase" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel4">Confirm</h5>
+				<button type="button" class="btn-close close-buy-purchase" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Confirm purchase? <i class="bi bi-bullseye"></i> 1.000
+                <button type="button" class="btn btn-danger w-100 d-block mt-3 mb-3 mx-auto" id="btnConfirmBuyPurchase">Buy</button>
+            </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary close-buy-purchase" data-bs-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
