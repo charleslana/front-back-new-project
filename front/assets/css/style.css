@@ -1,3 +1,5 @@
+@import url(cards.css);
+
 .spinner-border-lg {
     width: 3rem;
     height: 3rem;
@@ -61,20 +63,4 @@
 
 .text-legendary {
     color: #f0930e!important;
-}
-
-.card-1 {
-    background: url("../img/cards/1.png");
-}
-
-.card-2 {
-    background: url("../img/cards/2.png");
-}
-
-.card-3 {
-    background: url("../img/cards/3.png");
-}
-
-.card-4 {
-    background: url("../img/cards/4.png");
 }

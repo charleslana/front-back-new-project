@@ -2,6 +2,7 @@ import config from './config.js';
 import notFound from './notFound.js';
 import {yearDate} from './date.js';
 import {hideTooltip, addTooltip} from './tooltip.js';
+import {hidePopover, addPopover} from './popover.js';
 import hideOffcanvas from './offcanvas.js';
 import addSubmitLogin from './login.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
@@ -30,7 +31,6 @@ export const openPageLogged = (page) => {
 }
 
 const loadPage = (page) => {
-    hideTooltip();
     if (page == 'logout') {
         hideOffcanvas();
         return openPageNotLoggedIn('login');
@@ -45,6 +45,7 @@ const loadPage = (page) => {
         addSubmitLogin(openPageLogged);
         addClickSearchBattlePvp();
         addTooltip();
+        addPopover();
     });
 }
 
@@ -67,6 +68,8 @@ const showLoading = () => {
 
 const addClickMenuNotLoggedIn = () => {
     $('.page-not-logged-in').on('click', function(event) {
+        hideTooltip();
+        hidePopover();
         const page = $(this).attr('href').substring(1);
         const location = window.location.pathname.replace(/^.*\//g, '');
         if (location != page) {
@@ -78,6 +81,8 @@ const addClickMenuNotLoggedIn = () => {
 
 const addClickMenuLogged = () => {
     $('.page-logged, .link-logged').on('click', function(event) {
+        hideTooltip();
+        hidePopover();
         const page = $(this).attr('href').substring(1);
         const location = window.location.pathname.replace(/^.*\//g, '');
         if (location != page) {
