@@ -26,6 +26,9 @@
 
 .image-card {
     height: 140px;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 
 .bg-gray {
@@ -42,4 +45,36 @@
 
 .carousel-control-next-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23808080'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.text-common {
+    color: #6c757d!important;
+}
+
+.text-rare {
+    color: #0d6efd!important;
+}
+
+.text-epic {
+    color: #8128a8!important;
+}
+
+.text-legendary {
+    color: #f0930e!important;
+}
+
+.card-1 {
+    background: url("../img/cards/1.png");
+}
+
+.card-2 {
+    background: url("../img/cards/2.png");
+}
+
+.card-3 {
+    background: url("../img/cards/3.png");
+}
+
+.card-4 {
+    background: url("../img/cards/4.png");
 }
