@@ -6,6 +6,7 @@ import {hidePopover, addPopover} from './popover.js';
 import hideOffcanvas from './offcanvas.js';
 import addSubmitLogin from './login.js';
 import addSubmitRegister from './register.js';
+import {showModalError} from './modal.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
 
 export const openPageNotLoggedIn = (page) => {
@@ -92,10 +93,4 @@ const addClickMenuLogged = () => {
         }
         event.preventDefault();
     });
-}
-
-const showModalError = () => {
-    const modalError = document.getElementById('modalError');
-    const myModal = new bootstrap.Modal(modalError);
-    myModal.show();
 }
