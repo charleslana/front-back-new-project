@@ -5,10 +5,10 @@
 		</button>
 		<div class="collapse navbar-collapse align-items-center justify-content-center" id="navbarTogglerDemo01">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start w-100">
-                <p class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                    <i class="bi bi-person me-2"></i>
+                <div class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                    <div class="me-2 avatar-card bg-gray rounded-pill avatar-1"></div>
                     Charles
-                </p>
+                </div>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
                         <p class="nav-link text-white text-center" data-bs-toggle="popover" data-bs-trigger="hover focus" title="Parts" data-bs-content="The parts are used to buy new cards, you can achieve by dismounting repeated parts.">
@@ -100,33 +100,50 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<ul class="list-group mb-5">
-                    <li class="list-group-item active d-flex justify-content-between align-items-center">
-                        Battles PvP
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total battles
-                        <span class="badge bg-primary rounded-pill">999.999</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total battles win
-                        <span class="badge bg-primary rounded-pill">999.998</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total battles defeat
-                        <span class="badge bg-primary rounded-pill">1</span>
-                    </li>
-                </ul>
-
-                <ul class="list-group mb-5">
-                    <li class="list-group-item active d-flex justify-content-between align-items-center">
-                        Cards
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total cards
-                        <span class="badge bg-primary rounded-pill">999.999</span>
-                    </li>
-                </ul>
+                <nav class="mb-2">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</button>
+                        <button class="nav-link" id="nav-name-tab" data-bs-toggle="tab" data-bs-target="#nav-name" type="button" role="tab" aria-controls="nav-name" aria-selected="false">Change name</button>
+                        <button class="nav-link" id="nav-avatar-tab" data-bs-toggle="tab" data-bs-target="#nav-avatar" type="button" role="tab" aria-controls="nav-avatar" aria-selected="false">Change avatar</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <ul class="list-group mb-5">
+                            <li class="list-group-item active d-flex justify-content-between align-items-center">
+                                Battles PvP
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total battles
+                                <span class="badge bg-primary rounded-pill">999.999</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total battles win
+                                <span class="badge bg-primary rounded-pill">999.998</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total battles defeat
+                                <span class="badge bg-primary rounded-pill">1</span>
+                            </li>
+                        </ul>
+        
+                        <ul class="list-group mb-5">
+                            <li class="list-group-item active d-flex justify-content-between align-items-center">
+                                Cards
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total cards
+                                <span class="badge bg-primary rounded-pill">999.999</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="nav-name" role="tabpanel" aria-labelledby="nav-name-tab">
+                        Coming soon
+                    </div>
+                    <div class="tab-pane fade" id="nav-avatar" role="tabpanel" aria-labelledby="nav-avatar-tab">
+                        Coming soon
+                    </div>
+                </div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
