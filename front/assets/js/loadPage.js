@@ -5,6 +5,7 @@ import {hideTooltip, addTooltip} from './tooltip.js';
 import {hidePopover, addPopover} from './popover.js';
 import hideOffcanvas from './offcanvas.js';
 import addSubmitLogin from './login.js';
+import addSubmitRegister from './register.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
 
 export const openPageNotLoggedIn = (page) => {
@@ -43,6 +44,7 @@ const loadPage = (page) => {
         window.history.pushState('', '', `${config.urlFront}/${page}`);
         setColorIconPage(`#page-${page}`);
         addSubmitLogin(openPageLogged);
+        addSubmitRegister();
         addClickSearchBattlePvp();
         addTooltip();
         addPopover();
