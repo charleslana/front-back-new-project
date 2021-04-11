@@ -1,6 +1,7 @@
 import config from './config.js';
 import {showToast, hideToast} from './toast.js';
 import {showModalSuccess} from './modal.js';
+import loadingButton from './loadingButton.js';
 
 const addSubmitRegister = () => {
     $('#formRegister').submit((event) => {
@@ -16,7 +17,7 @@ const addSubmitRegister = () => {
         }
         $.ajax({
             beforeSend: function() {
-                
+                loadingButton('#formRegister button', 'Register', true);
             },
             type: 'POST',
             url: `${config.urlBack}/register.json`,
@@ -28,8 +29,7 @@ const addSubmitRegister = () => {
                 if (response.status == 'success') {
                     hideToast();
                     showModalSuccess(response.message);
-                    $('#formRegister').trigger('reset');
-                    return false;
+                    return $('#formRegister').trigger('reset');
                 }
 
                 if (response.status == 'error') {
@@ -38,6 +38,9 @@ const addSubmitRegister = () => {
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 showToast(`Status: ${textStatus}<br>Error: ${errorThrown}`);
+            },
+            complete: function() {
+                loadingButton('#formRegister button', 'Register', false);
             }
         });
     });
