@@ -51,6 +51,9 @@ const loadPage = (page) => {
         addClickSearchBattlePvp();
         addTooltip();
         addPopover();
+        if ($('#exampleInputEmail1').length) {
+            $('#exampleInputEmail1').focus();
+        }
     });
 }
 
