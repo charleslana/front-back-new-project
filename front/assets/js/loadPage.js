@@ -1,12 +1,14 @@
 import config from './config.js';
+import showLoading from './loading.js';
 import notFound from './notFound.js';
 import {yearDate} from './date.js';
-import {hideTooltip, addTooltip} from './tooltip.js';
-import {hidePopover, addPopover} from './popover.js';
+import {addTooltip} from './tooltip.js';
+import {addPopover} from './popover.js';
 import hideOffcanvas from './offcanvas.js';
 import addSubmitLogin from './login.js';
 import addSubmitRegister from './register.js';
 import {showModalError} from './modal.js';
+import {addClickMenuNotLoggedIn, addClickMenuLogged} from './menu.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
 
 export const openPageNotLoggedIn = (page) => {
@@ -17,7 +19,7 @@ export const openPageNotLoggedIn = (page) => {
         }
         yearDate();
         loadPage(page);
-        addClickMenuNotLoggedIn();
+        addClickMenuNotLoggedIn(loadPage);
     });
 }
 
@@ -28,7 +30,7 @@ export const openPageLogged = (page) => {
             return showModalError();
         }
         loadPage(page);
-        addClickMenuLogged();
+        addClickMenuLogged(loadPage);
     });
 }
 
@@ -55,42 +57,4 @@ const loadPage = (page) => {
 const setColorIconPage = (location) => {
     $('.page-not-logged-in, .page-logged').removeClass('text-white').addClass('text-muted');
     $(location).removeClass('text-muted').addClass('text-white');
-}
-
-const showLoading = () => {
-    return `
-    <div class="container">
-        <div class="mt-5 d-flex justify-content-center">
-            <div class="spinner-border spinner-border-lg" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-    </div>
-    `;
-}
-
-const addClickMenuNotLoggedIn = () => {
-    $('.page-not-logged-in').on('click', function(event) {
-        hideTooltip();
-        hidePopover();
-        const page = $(this).attr('href').substring(1);
-        const location = window.location.pathname.replace(/^.*\//g, '');
-        if (location != page) {
-            loadPage(page);
-        }
-        event.preventDefault();
-    });
-}
-
-const addClickMenuLogged = () => {
-    $('.page-logged, .link-logged').on('click', function(event) {
-        hideTooltip();
-        hidePopover();
-        const page = $(this).attr('href').substring(1);
-        const location = window.location.pathname.replace(/^.*\//g, '');
-        if (location != page) {
-            loadPage(page);
-        }
-        event.preventDefault();
-    });
 }
