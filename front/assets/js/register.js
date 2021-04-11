@@ -1,4 +1,5 @@
-import notifyToast from './toast.js';
+import config from './config.js';
+import {showToast, hideToast} from './toast.js';
 import {showModalSuccess} from './modal.js';
 
 const addSubmitRegister = () => {
@@ -8,13 +9,37 @@ const addSubmitRegister = () => {
         const password = $('#exampleInputPassword1').val();
         const confirmPassword = $('#exampleInputPassword2').val();
         if (password.length < 6) {
-            return notifyToast('The password must contain at least 6 characters.');
+            return showToast('The password must contain at least 6 characters.');
         }
         if (password != confirmPassword) {
-            return notifyToast('The confirmation password is wrong.');
+            return showToast('The confirmation password is wrong.');
         }
-        showModalSuccess('Registration completed successfully, please login to your account.');
-        $('#formRegister').trigger('reset');
+        $.ajax({
+            beforeSend: function() {
+                
+            },
+            type: 'POST',
+            url: `${config.urlBack}/register.json`,
+            data: {
+                email: email,
+                password: password
+            },
+            success: function(response) {
+                if (response.status == 'success') {
+                    hideToast();
+                    showModalSuccess(response.message);
+                    $('#formRegister').trigger('reset');
+                    return false;
+                }
+
+                if (response.status == 'error') {
+                    return showToast(response.message);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                showToast(`Status: ${textStatus}<br>Error: ${errorThrown}`);
+            }
+        });
     });
 }
 

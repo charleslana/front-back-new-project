@@ -1,6 +1,6 @@
 const config = {
     urlFront: '/front',
-    urlBack: ''
+    urlBack: 'mock'
 }
 
 export default config;
