@@ -18,7 +18,7 @@ export const addSubmitLogin = (openPageLogged) => {
                 loadingButton('#formLogin button', 'Login', true);
             },
             type: 'POST',
-            url: `${config.urlBack}/login.json`,
+            url: `${config.urlBack}${config.apiLogin}`,
             data: {
                 email: email,
                 password: password

@@ -23,7 +23,7 @@ const addSubmitRegister = () => {
                 loadingButton('#formRegister button', 'Register', true);
             },
             type: 'POST',
-            url: `${config.urlBack}/register.json`,
+            url: `${config.urlBack}${config.apiRegister}`,
             data: {
                 email: email,
                 password: password
