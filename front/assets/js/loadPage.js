@@ -5,7 +5,7 @@ import {yearDate} from './date.js';
 import {addTooltip} from './tooltip.js';
 import {addPopover} from './popover.js';
 import hideOffcanvas from './offcanvas.js';
-import addSubmitLogin from './login.js';
+import {addSubmitLogin, showSave} from './login.js';
 import addSubmitRegister from './register.js';
 import {showModalError} from './modal.js';
 import {addClickMenuNotLoggedIn, addClickMenuLogged} from './menu.js';
@@ -51,6 +51,7 @@ const loadPage = (page) => {
         addClickSearchBattlePvp();
         addTooltip();
         addPopover();
+        showSave();
     });
 }
 

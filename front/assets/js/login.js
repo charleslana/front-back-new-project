@@ -2,7 +2,7 @@ import config from './config.js';
 import {showToast, hideToast} from './toast.js';
 import loadingButton from './loadingButton.js';
 
-const addSubmitLogin = (openPageLogged) => {
+export const addSubmitLogin = (openPageLogged) => {
     $('#formLogin').submit((event) => {
         event.preventDefault();
         const email = $('#exampleInputEmail1').val();
@@ -26,6 +26,7 @@ const addSubmitLogin = (openPageLogged) => {
             success: function(response) {
                 if (response.status == 'success') {
                     hideToast();
+                    saveLogin(email, password);
                     return openPageLogged('home');
                 }
 
@@ -45,4 +46,23 @@ const addSubmitLogin = (openPageLogged) => {
     });
 }
 
-export default addSubmitLogin;
+export const showSave = () => {
+    if ($('#exampleCheck1').length) {
+        const email = localStorage.getItem('email');
+        const password = localStorage.getItem('password');
+        if (email) {
+            $('#exampleInputEmail1').val(email);
+            $('#exampleInputPassword1').val(password);
+            $('#exampleCheck1').attr('checked','checked');
+        }
+    }
+}
+
+const saveLogin = (email, password) => {
+    if ($('#exampleCheck1').is(':checked')) {
+        localStorage.setItem('email', email);
+        return localStorage.setItem('password', password);
+    }
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+}
