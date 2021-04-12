@@ -9,6 +9,9 @@ const addSubmitRegister = () => {
         const email = $('#exampleInputEmail1').val();
         const password = $('#exampleInputPassword1').val();
         const confirmPassword = $('#exampleInputPassword2').val();
+        if (!email || !password || !confirmPassword) {
+            return showToast('Fill in the required fields.'); 
+        }
         if (password.length < 6) {
             return showToast('The password must contain at least 6 characters.');
         }
