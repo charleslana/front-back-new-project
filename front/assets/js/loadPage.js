@@ -18,8 +18,8 @@ export const openPageNotLoggedIn = (page) => {
             return showModalError();
         }
         yearDate();
-        loadPage(page);
         addClickMenuNotLoggedIn(loadPage);
+        loadPage(page);
     });
 }
 
@@ -29,8 +29,8 @@ export const openPageLogged = (page) => {
         if (status == 'error') {
             return showModalError();
         }
-        loadPage(page);
         addClickMenuLogged(loadPage);
+        loadPage(page);
     });
 }
 
@@ -40,7 +40,7 @@ const loadPage = (page) => {
         return openPageNotLoggedIn('login');
     }
     $('#content').html(showLoading());
-    $('#content').load(`pages/${page}.html`, (response, status, xhr) => {
+    $('#content').load(`${config.urlFront}/pages/${page}.html`, (response, status, xhr) => {
         if (status == 'error') {
             return notFound(loadPage);
         }
