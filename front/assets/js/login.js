@@ -27,6 +27,7 @@ export const addSubmitLogin = (openPageLogged) => {
                 if (response.status == 'success') {
                     hideToast();
                     saveLogin(email, password);
+                    saveData(response);
                     return openPageLogged('home');
                 }
 
@@ -58,6 +59,27 @@ export const showSave = () => {
     }
 }
 
+export const showData = () => {
+    const name = localStorage.getItem('name');
+    const avatar = localStorage.getItem('avatar');
+    const parts = localStorage.getItem('parts');
+    const gems = localStorage.getItem('gems');
+    const coins = localStorage.getItem('coins');
+    $('#dataName').text(name);
+    $('#dataAvatar').addClass(`avatar-${avatar}`);
+    $('#dataParts').text(parts);
+    $('#dataGems').text(gems);
+    $('#dataCoins').text(coins);
+}
+
+export const removeData = () => {
+    localStorage.removeItem('name');
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('parts');
+    localStorage.removeItem('gems');
+    localStorage.removeItem('coins');
+}
+
 const saveLogin = (email, password) => {
     if ($('#exampleCheck1').is(':checked')) {
         localStorage.setItem('email', email);
@@ -65,4 +87,12 @@ const saveLogin = (email, password) => {
     }
     localStorage.removeItem('email');
     localStorage.removeItem('password');
+}
+
+const saveData = (response) => {
+    localStorage.setItem('name', response.name);
+    localStorage.setItem('avatar', response.avatar);
+    localStorage.setItem('parts', response.parts);
+    localStorage.setItem('gems', response.gems);
+    localStorage.setItem('coins', response.coins);
 }

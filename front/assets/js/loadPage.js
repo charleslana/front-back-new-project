@@ -5,7 +5,7 @@ import {yearDate} from './date.js';
 import {addTooltip} from './tooltip.js';
 import {addPopover} from './popover.js';
 import hideOffcanvas from './offcanvas.js';
-import {addSubmitLogin, showSave} from './login.js';
+import {addSubmitLogin, showSave, showData, removeData} from './login.js';
 import addSubmitRegister from './register.js';
 import {showModalError} from './modal.js';
 import {addClickMenuNotLoggedIn, addClickMenuLogged} from './menu.js';
@@ -37,6 +37,7 @@ export const openPageLogged = (page) => {
 const loadPage = (page) => {
     if (page == 'logout') {
         hideOffcanvas();
+        removeData();
         return openPageNotLoggedIn('login');
     }
     $('#content').html(showLoading());
@@ -52,6 +53,7 @@ const loadPage = (page) => {
         addTooltip();
         addPopover();
         showSave();
+        showData();
     });
 }
 
