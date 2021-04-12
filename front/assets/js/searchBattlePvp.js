@@ -1,22 +1,23 @@
+import loadingButton from './loadingButton.js';
+
 const addClickSearchBattlePvp = () => {
-    $('#btnBattlePvp').on('click', (event) => {
-        searchBattlePvp(event);
+    $('#btnBattlePvp').on('click', () => {
+        searchBattlePvp();
     });
-    $('#btnBattlePvpCancel').on('click', (event) => {
-        cancelBattlePvp(event);
+    $('#btnBattlePvpCancel').on('click', () => {
+        cancelBattlePvp();
     });
 }
 
-const searchBattlePvp = (event) => {
-    $(event.target).addClass('d-none');
-    $('#btnBattlePvpDisabled, #btnBattlePvpCancel').removeClass('d-none');
+const searchBattlePvp = () => {
+    loadingButton('#btnBattlePvp', 'Search opponent', true);
+    $('#btnBattlePvpCancel').removeClass('d-none');
     $('.close-battle').attr("disabled", true);
 }
 
-const cancelBattlePvp = (event) => {
-    $(event.target).addClass('d-none');
-    $('#btnBattlePvpDisabled').addClass('d-none');
-    $('#btnBattlePvp').removeClass('d-none');
+const cancelBattlePvp = () => {
+    loadingButton('#btnBattlePvp', '<i class="bi bi-search"></i> Search opponent', false);
+    $('#btnBattlePvpCancel').addClass('d-none');
     $('.close-battle').attr("disabled", false);
 }
 

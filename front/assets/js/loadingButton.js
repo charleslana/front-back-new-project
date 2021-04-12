@@ -6,7 +6,7 @@ const loadingButton = (event, text, active) => {
         `).attr('disabled', true);
     }
 
-    $(event).text(text).attr('disabled', false);
+    $(event).html(text).attr('disabled', false);
 }
 
 export default loadingButton;
