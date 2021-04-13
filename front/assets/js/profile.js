@@ -28,6 +28,11 @@ const loadProfile = () => {
             if (response.status == 'success') {
                 hideToast();
                 const modal = $('.modal-body')[1];
+                $('#profileTotalBattles').text(response.totalBattles);
+                $('#profileTotalBattlesWin').text(response.totalBattlesWin);
+                $('#profileTotalBattlesDefeat').text(response.totalBattlesDefeat);
+                $('#profileTotalCards').text(response.totalCards);
+                $('#profileInputName').val(response.name);
                 $('#modalProfile').find('.modal-body').addClass('d-none');
                 return $('#modalProfile').find(modal).removeClass('d-none');
             }

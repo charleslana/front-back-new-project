@@ -127,15 +127,15 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total battles
-                                <span class="badge bg-primary rounded-pill">999.999</span>
+                                <span class="badge bg-primary rounded-pill" id="profileTotalBattles">--</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total battles win
-                                <span class="badge bg-primary rounded-pill">999.998</span>
+                                <span class="badge bg-primary rounded-pill" id="profileTotalBattlesWin">--</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total battles defeat
-                                <span class="badge bg-primary rounded-pill">1</span>
+                                <span class="badge bg-primary rounded-pill" id="profileTotalBattlesDefeat">--</span>
                             </li>
                         </ul>
         
@@ -145,15 +145,15 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total cards
-                                <span class="badge bg-primary rounded-pill">999.999</span>
+                                <span class="badge bg-primary rounded-pill" id="profileTotalCards">--</span>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="nav-name" role="tabpanel" aria-labelledby="nav-name-tab">
                         <form class="row g-3" id="changeName">
                             <div class="col-12">
-                                <label for="inputName" class="form-label">Change your name</label>
-                                <input type="text" class="form-control text-center" id="inputName" value="Charles" required>
+                                <label for="profileInputName" class="form-label">Change your name</label>
+                                <input type="text" class="form-control text-center" id="profileInputName" value="--" required>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary w-100">Change</button>
