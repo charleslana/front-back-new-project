@@ -9,7 +9,7 @@ import {addSubmitLogin, showSave, showData, removeData} from './login.js';
 import addSubmitRegister from './register.js';
 import {showModalError} from './modal.js';
 import {addClickMenuNotLoggedIn, addClickMenuLogged} from './menu.js';
-import {showProfile} from './profile.js';
+import {showProfile, addSubmitChangeName} from './profile.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
 
 export const openPageNotLoggedIn = (page) => {
@@ -56,6 +56,7 @@ const loadPage = (page) => {
         showSave();
         showData();
         showProfile();
+        addSubmitChangeName();
     });
 }
 

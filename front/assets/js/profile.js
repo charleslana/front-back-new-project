@@ -49,3 +49,9 @@ const loadProfile = () => {
         }
     });
 }
+
+export const addSubmitChangeName = () => {
+    $('#formChangeName').submit((event) => {
+        event.preventDefault();
+    });
+}
