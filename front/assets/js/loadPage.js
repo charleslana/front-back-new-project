@@ -8,30 +8,44 @@ import hideOffcanvas from './offcanvas.js';
 import {addSubmitLogin, showSave, showData, removeData} from './login.js';
 import addSubmitRegister from './register.js';
 import {showModalError} from './modal.js';
-import {addClickMenuNotLoggedIn, addClickMenuLogged} from './menu.js';
+import addClickMenu from './menu.js';
 import {showProfile, addSubmitChangeName} from './profile.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
 
 export const openPageNotLoggedIn = (page) => {
-    $('main').html(showLoading());
-    $('main').load('not-logged-in.html', (response, status, xhr) => {
-        if (status == 'error') {
-            return showModalError();
-        }
+    const main = document.querySelector('main');
+    main.innerHTML = showLoading();
+
+    fetch(`${config.urlFront}/not-logged-in.html`)
+    .then((response) => {
+        return response.text();
+    })
+    .then((data) => {
+        main.innerHTML = data;
         yearDate();
-        addClickMenuNotLoggedIn(loadPage);
+        addClickMenu(loadPage);
         loadPage(page);
+    })
+    .catch((error) => {
+        return showModalError(error.message);
     });
 }
 
 export const openPageLogged = (page) => {
-    $('main').html(showLoading());
-    $('main').load('logged.html', (response, status, xhr) => {
-        if (status == 'error') {
-            return showModalError();
-        }
-        addClickMenuLogged(loadPage);
+    const main = document.querySelector('main');
+    main.innerHTML = showLoading();
+
+    fetch(`${config.urlFront}/logged.html`)
+    .then((response) => {
+        return response.text();
+    })
+    .then((data) => {
+        main.innerHTML = data;
+        addClickMenu(loadPage);
         loadPage(page);
+    })
+    .catch((error) => {
+        return showModalError(error.message);
     });
 }
 
@@ -41,15 +55,22 @@ const loadPage = (page) => {
         removeData();
         return openPageNotLoggedIn('login');
     }
-    $('#content').html(showLoading());
+    const content = document.getElementById('content');
+    content.innerHTML = showLoading();
+
     fetch(`${config.urlFront}/pages/${page}.html`)
     .then((response) => {
+        if (!response.ok) throw new Error(`
+            <h2>Error when executing the request</h2>
+            <p>Status ${response.status}</p>
+            <p>Message ${response.statusText}</p>
+        `);
         return response.text();
     })
     .then((data) => {
-        $('#content').html(data);
+        content.innerHTML = data;
         window.history.pushState('', '', `${config.urlFront}/${page}`);
-        setColorIconPage(`#page-${page}`);
+        setColorIconPage(`page-${page}`);
         addSubmitLogin(openPageLogged);
         addSubmitRegister();
         addClickSearchBattlePvp();
@@ -61,12 +82,21 @@ const loadPage = (page) => {
         addSubmitChangeName();
     })
     .catch((error) => {
-        console.log(error.message);
-        return notFound(loadPage);
+        return notFound(loadPage, error.message);
     });
 }
 
-const setColorIconPage = (location) => {
-    $('.page-not-logged-in, .page-logged').removeClass('text-white').addClass('text-muted');
-    $(location).removeClass('text-muted').addClass('text-white');
+const setColorIconPage = (event) => {
+    const clickMenus = document.querySelectorAll('.click-menu');
+    const menu = document.getElementById(event);
+
+    clickMenus.forEach((menu) => {
+        if (!menu.classList.contains('btn-menu')) {
+            menu.classList.remove('text-white');
+            menu.classList.add('text-muted');
+        }
+    });
+
+    menu.classList.remove('text-muted');
+    menu.classList.add('text-white');
 }

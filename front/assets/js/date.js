@@ -1,4 +1,4 @@
 export const yearDate = () => {
     const date = new Date;
-    $('#yearDate').text(date.getFullYear());
+    document.getElementById('yearDate').innerText = date.getFullYear();
 }

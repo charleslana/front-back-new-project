@@ -1,12 +1,13 @@
-export const showModalError = () => {
-    const modalError = $('#modalError').get(0);
+export const showModalError = (message) => {
+    const modalError = document.getElementById('modalError');
     const myModal = new bootstrap.Modal(modalError);
+    document.querySelector('#modalError .modal-body > span').innerText = message;
     myModal.show();
 }
 
 export const showModalSuccess = (message) => {
-    const modalSuccess = $('#modalSuccess').get(0);
+    const modalSuccess = document.getElementById('modalSuccess');
     const myModal = new bootstrap.Modal(modalSuccess);
-    $('#modalSuccess .modal-body > span').text(message);
+    document.querySelector('#modalSuccess .modal-body > span').innerText = message;
     myModal.show();
 }

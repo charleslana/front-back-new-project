@@ -1,28 +1,22 @@
 import {hideTooltip} from './tooltip.js';
 import {hidePopover} from './popover.js';
 
-export const addClickMenuNotLoggedIn = (loadPage) => {
-    $('.page-not-logged-in').on('click', function(event) {
-        hideTooltip();
-        hidePopover();
-        const page = $(this).attr('href').substring(1);
-        const location = window.location.pathname.replace(/^.*\//g, '');
-        if (location != page) {
-            loadPage(page);
+const addClickMenu = (loadPage) => {
+    const clickMenus = document.querySelectorAll('.click-menu');
+    clickMenus.forEach((menu) => {
+        if (menu) {
+            menu.addEventListener('click', function (event) {
+                event.preventDefault();
+                hideTooltip();
+                hidePopover();
+                const page = this.href.replace(/^.*\//g, '');
+                const location = window.location.pathname.replace(/^.*\//g, '');
+                if (location != page) {
+                    loadPage(page);
+                }
+            });
         }
-        event.preventDefault();
     });
 }
 
-export const addClickMenuLogged = (loadPage) => {
-    $('.page-logged, .link-logged').on('click', function(event) {
-        hideTooltip();
-        hidePopover();
-        const page = $(this).attr('href').substring(1);
-        const location = window.location.pathname.replace(/^.*\//g, '');
-        if (location != page) {
-            loadPage(page);
-        }
-        event.preventDefault();
-    });
-}
+export default addClickMenu;

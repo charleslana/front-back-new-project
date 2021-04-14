@@ -1,5 +1,6 @@
 {
     "status": "success",
+    "message": "Login or password invalid.",
     "name": "Charles",
     "avatar": "1",
     "parts": "0",
