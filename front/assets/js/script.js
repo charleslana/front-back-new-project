@@ -1,6 +1,6 @@
 import {openPageNotLoggedIn, openPageLogged} from './loadPage.js';
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
     const location = window.location.pathname.replace(/^.*\//g, '');
     if (location) {
         if (location == 'login' || location == 'register') {

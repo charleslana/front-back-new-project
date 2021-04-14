@@ -1,12 +1,12 @@
 export const showToast = (message) => {
-    const toast = $('#toast').get(0);
+    const toast = document.getElementById('toast');
     const myToast = new bootstrap.Toast(toast);
-    $('#toast .toast-body').html(message);
+    document.querySelector('#toast .toast-body').innerHTML = message;
     myToast.show();
 }
 
 export const hideToast = () => {
-    const toast = $('#toast').get(0);
+    const toast = document.getElementById('toast');
     const myToast = new bootstrap.Toast(toast);
     myToast.hide();
 }

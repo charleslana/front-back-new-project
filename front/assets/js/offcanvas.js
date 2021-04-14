@@ -1,5 +1,5 @@
 const hideOffcanvas = () => {
-    const myOffcanvas = $('#offcanvasRight').get(0);
+    const myOffcanvas = document.getElementById('offcanvasRight');
     const bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
     bsOffcanvas.show();
     bsOffcanvas.hide();

@@ -1,9 +1,13 @@
 export const hideTooltip = () => {
-    $('[data-bs-toggle="tooltip"]').tooltip("hide");
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map((tooltipTriggerEl) => {
+        const myTooltip = new bootstrap.Tooltip(tooltipTriggerEl);
+        myTooltip.hide();
+    });
 }
 
 export const addTooltip = () => {
-    const tooltipTriggerList = [].slice.call($('[data-bs-toggle="tooltip"]'));
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });

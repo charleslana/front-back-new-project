@@ -4,49 +4,55 @@ import {showModalSuccess} from './modal.js';
 import loadingButton from './loadingButton.js';
 
 const addSubmitRegister = () => {
-    $('#formRegister').submit((event) => {
-        event.preventDefault();
-        const email = $('#exampleInputEmail1').val();
-        const password = $('#exampleInputPassword1').val();
-        const confirmPassword = $('#exampleInputPassword2').val();
-        if (!email || !password || !confirmPassword) {
-            return showToast('Fill in the required fields.'); 
-        }
-        if (password.length < 6) {
-            return showToast('The password must contain at least 6 characters.');
-        }
-        if (password != confirmPassword) {
-            return showToast('The confirmation password is wrong.');
-        }
-        $.ajax({
-            beforeSend: function() {
-                loadingButton('#formRegister button', 'Register', true);
-            },
-            type: 'POST',
-            url: `${config.urlBack}${config.apiRegister}`,
-            data: {
-                email: email,
-                password: password
-            },
-            success: function(response) {
-                if (response.status == 'success') {
+    const form = document.getElementById('formRegister');
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('exampleInputEmail1').value;
+            const password = document.getElementById('exampleInputPassword1').value;
+            const confirmPassword = document.getElementById('exampleInputPassword2').value;
+
+            if (!email || !password || !confirmPassword) {
+                return showToast('Fill in the required fields.'); 
+            }
+            if (password.length < 6) {
+                return showToast('The password must contain at least 6 characters.');
+            }
+            if (password != confirmPassword) {
+                return showToast('The confirmation password is wrong.');
+            }
+
+            loadingButton('#formRegister button', 'Register', true);
+
+            fetch(`${config.urlBack}${config.apiRegister}`, {
+                method: 'post',
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                loadingButton('#formRegister button', 'Register', false);
+
+                if (data.status == 'success') {
                     hideToast();
-                    showModalSuccess(response.message);
-                    return $('#formRegister').trigger('reset');
+                    showModalSuccess(data.message);
+                    return document.getElementById('formRegister').reset();
                 }
 
-                if (response.status == 'error') {
-                    return showToast(response.message);
+                if (data.status == 'error') {
+                    return showToast(data.message);
                 }
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                showToast(`Status: ${textStatus}<br>Error: ${errorThrown}`);
-            },
-            complete: function() {
-                loadingButton('#formRegister button', 'Register', false);
-            }
+            })
+            .catch((error) => {
+                return showToast(`Error: ${error.message}`);
+            });
         });
-    });
+    }
 }
 
 export default addSubmitRegister;

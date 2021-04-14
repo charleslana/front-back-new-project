@@ -1,24 +1,30 @@
 import loadingButton from './loadingButton.js';
 
 const addClickSearchBattlePvp = () => {
-    $('#btnBattlePvp').on('click', () => {
-        searchBattlePvp();
-    });
-    $('#btnBattlePvpCancel').on('click', () => {
-        cancelBattlePvp();
-    });
+    const battlePvp = document.getElementById('btnBattlePvp');
+    if (battlePvp) {
+        battlePvp.addEventListener('click', () => {
+            searchBattlePvp();
+        });
+    }
+    const battlePvpCancel = document.getElementById('btnBattlePvpCancel');
+    if (battlePvpCancel) {
+        battlePvpCancel.addEventListener('click', () => {
+            cancelBattlePvp();
+        });
+    }
 }
 
 const searchBattlePvp = () => {
     loadingButton('#btnBattlePvp', 'Search opponent', true);
-    $('#btnBattlePvpCancel').removeClass('d-none');
-    $('.close-battle').attr("disabled", true);
+    document.getElementById('btnBattlePvpCancel').classList.remove('d-none');
+    document.querySelector('.close-battle').setAttribute('disabled', true);
 }
 
 const cancelBattlePvp = () => {
     loadingButton('#btnBattlePvp', '<i class="bi bi-search"></i> Search opponent', false);
-    $('#btnBattlePvpCancel').addClass('d-none');
-    $('.close-battle').attr("disabled", false);
+    document.getElementById('btnBattlePvpCancel').classList.add('d-none');
+    document.querySelector('.close-battle').removeAttribute('disabled');
 }
 
 export default addClickSearchBattlePvp;
