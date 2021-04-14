@@ -3,7 +3,7 @@ import {showToast, hideToast} from './toast.js';
 
 export const showProfile = () => {
     const myModalProfile = document.getElementById('modalProfile');
-    if (myModalProfile != null) {
+    if (myModalProfile) {
         myModalProfile.addEventListener('show.bs.modal', function (event) {
             document.querySelectorAll('#modalProfile .modal-body')[1].classList.add('d-none');
             document.querySelector('#modalProfile .modal-body').classList.remove('d-none');
