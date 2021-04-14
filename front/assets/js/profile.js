@@ -10,11 +10,6 @@ export const showProfile = () => {
             document.querySelector('.modal-body').classList.remove('d-none');
             document.querySelectorAll('#modalProfile button[data-bs-dismiss="modal"]')[0].setAttribute('disabled', true);
             document.querySelectorAll('#modalProfile button[data-bs-dismiss="modal"]')[1].setAttribute('disabled', true);
-
-            // const modal = $('.modal-body')[1];
-            // $('#modalProfile').find('.modal-body').removeClass('d-none');
-            // $('#modalProfile').find(modal).addClass('d-none');
-            //$('#modalProfile').find('button[data-bs-dismiss="modal"]').attr('disabled', true);
         });
         myModalProfile.addEventListener('shown.bs.modal', function (event) {
             loadProfile();
