@@ -2,16 +2,24 @@ import config from './config.js';
 import {showToast, hideToast} from './toast.js';
 
 export const showProfile = () => {
-    const myModalProfile = $('#modalProfile').get(0);
-    myModalProfile.addEventListener('show.bs.modal', function (event) {
-        const modal = $('.modal-body')[1];
-        $('#modalProfile').find('.modal-body').removeClass('d-none');
-        $('#modalProfile').find(modal).addClass('d-none');
-        $('#modalProfile').find('button[data-bs-dismiss="modal"]').attr('disabled', true);
-    });
-    myModalProfile.addEventListener('shown.bs.modal', function (event) {
-        loadProfile();
-    });
+    const myModalProfile = document.getElementById('modalProfile');
+    if (myModalProfile != null) {
+        myModalProfile.addEventListener('show.bs.modal', function (event) {
+            const modal = document.querySelectorAll('#modalProfile .modal-body')[1];
+            modal.classList.add('d-none');
+            document.querySelector('.modal-body').classList.remove('d-none');
+            document.querySelectorAll('#modalProfile button[data-bs-dismiss="modal"]')[0].setAttribute('disabled', true);
+            document.querySelectorAll('#modalProfile button[data-bs-dismiss="modal"]')[1].setAttribute('disabled', true);
+
+            // const modal = $('.modal-body')[1];
+            // $('#modalProfile').find('.modal-body').removeClass('d-none');
+            // $('#modalProfile').find(modal).addClass('d-none');
+            //$('#modalProfile').find('button[data-bs-dismiss="modal"]').attr('disabled', true);
+        });
+        myModalProfile.addEventListener('shown.bs.modal', function (event) {
+            loadProfile();
+        });
+    }
 }
 
 const loadProfile = () => {

@@ -42,10 +42,12 @@ const loadPage = (page) => {
         return openPageNotLoggedIn('login');
     }
     $('#content').html(showLoading());
-    $('#content').load(`${config.urlFront}/pages/${page}.html`, (response, status, xhr) => {
-        if (status == 'error') {
-            return notFound(loadPage);
-        }
+    fetch(`${config.urlFront}/pages/${page}.html`)
+    .then((response) => {
+        return response.text();
+    })
+    .then((data) => {
+        $('#content').html(data);
         window.history.pushState('', '', `${config.urlFront}/${page}`);
         setColorIconPage(`#page-${page}`);
         addSubmitLogin(openPageLogged);
@@ -57,6 +59,10 @@ const loadPage = (page) => {
         showData();
         showProfile();
         addSubmitChangeName();
+    })
+    .catch((error) => {
+        console.log(error.message);
+        return notFound(loadPage);
     });
 }
 
