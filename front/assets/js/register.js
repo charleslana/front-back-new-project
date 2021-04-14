@@ -28,8 +28,8 @@ const addSubmitRegister = () => {
             fetch(`${config.urlBack}${config.apiRegister}`, {
                 method: 'post',
                 body: JSON.stringify({
-                    email: email,
-                    password: password
+                    email,
+                    password
                 })
             })
             .then((response) => {

@@ -21,8 +21,8 @@ export const addSubmitLogin = (openPageLogged) => {
             fetch(`${config.urlBack}${config.apiLogin}`, {
                 method: 'post',
                 body: JSON.stringify({
-                    email: email,
-                    password: password
+                    email,
+                    password
                 })
             })
             .then((response) => {
