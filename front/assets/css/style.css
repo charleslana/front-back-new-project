@@ -73,7 +73,3 @@
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
-
-.bi-plus::before {
-    vertical-align: middle;
-}
