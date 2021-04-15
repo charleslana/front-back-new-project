@@ -1,7 +1,7 @@
 export const hideTooltip = () => {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map((tooltipTriggerEl) => {
-        const myTooltip = new bootstrap.Tooltip(tooltipTriggerEl);
+        const myTooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
         myTooltip.hide();
     });
 }

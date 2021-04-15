@@ -1,8 +1,7 @@
 export const hidePopover = () => {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => {
-        const myPopover = new bootstrap.Popover(popoverTriggerEl);
-        myPopover.show();
+        const myPopover = bootstrap.Popover.getInstance(popoverTriggerEl);
         myPopover.hide();
     });
 }
