@@ -3,7 +3,6 @@ const notFound = (loadPage, message) => {
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-5 text-center">
-                    <h1>Oops!</h1>
                     ${message}
                     <button type="button" class="btn btn-primary btn-lg" id="btnNotFound">Back previously</button>
                 </div>

@@ -61,8 +61,7 @@ const loadPage = (page) => {
     fetch(`${config.urlFront}/pages/${page}.html`)
     .then((response) => {
         if (!response.ok) throw new Error(`
-            <h2>Error when executing the request</h2>
-            <p>Status ${response.status}</p>
+            <h2>Status ${response.status}</h2>
             <p>Message ${response.statusText}</p>
         `);
         return response.text();
